@@ -5357,7 +5357,7 @@ int smblib_set_prop_reset_rd(struct smb_charger *chg,
 			chg->power_role != POWER_SUPPLY_TYPEC_PR_NONE) {
 		smblib_dbg(chg, PR_MISC, "power role already in %d, ignore!",
 				chg->power_role);
-		goto unlock;
+		return 0;
 	}
 	smblib_err(chg, "0x155C value is 0x%04x\n", stat);
 	schedule_delayed_work(&chg->reset_rd_work, msecs_to_jiffies(500));
